@@ -59,3 +59,27 @@ class LinkedList:
       if self.length == 0:
          self.tail = None
       return temp
+  def get(self,index):
+        if index < 0 or index  >= self.length:
+          return None
+        temp = self.head
+        for _ in range(index):
+          temp = temp.next
+        return temp
+    # for set I used two approaches
+    #first approach
+  def set_value(self,index,value):
+      if index < 0 or index  >= self.length:
+        return None
+      temp = self.head
+      for i in range(index):
+        temp = temp.next
+      temp.value = value
+      return True
+    #second set approach
+  def setvalue(self,index,value):
+      temp= self.get(index)
+      if temp:
+       temp.value = value
+       return True
+      return False
