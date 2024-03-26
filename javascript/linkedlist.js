@@ -79,7 +79,15 @@ class Linkedlist {
         for (let i = 0; i < index; i++) {
             temp = temp.next
         }
-        return temp.value
+        return temp
+    }
+    set = function (index, value) {
+        let temp = this.get(index)
+        if (temp) {
+            temp.value = value
+            return True
+        }
+        return false
     }
 }
 
