@@ -73,6 +73,14 @@ class Linkedlist {
         this.length++
         return this
     }
+    get = function (index) {
+        if (index < 0 || index > this.length) { return undefined }
+        temp = this.head
+        for (let i = 0; i < index; i++) {
+            temp = temp.next
+        }
+        return temp.value
+    }
 }
 
 let myLinkedlist = new Linkedlist(4)
