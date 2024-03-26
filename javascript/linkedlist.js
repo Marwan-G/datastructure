@@ -46,12 +46,43 @@ class Linkedlist {
             return temp
         }
     }
-
-
+    shift = function () {
+        if (!this.head) return undefined
+        if (this.length == 1) {
+            this.head = null
+            this.tail = null
+            this.length--
+        } else {
+            let temp = this.head
+            this.head = temp.next
+            temp.next = null
+            this.length--
+            return temp
+        }
+    }
+    // add new node infront 
+    unshift = function (value) {
+        const newNode = new new_node(value)
+        if (!this.head) {
+            this.head = newNode
+            this.tail = newNode
+        } else {
+            newNode.next = this.head
+            this.head = newNode
+        }
+        this.length++
+        return this
+    }
 }
 
 let myLinkedlist = new Linkedlist(4)
-myLinkedlist.pop()
 
+//test my LinkedList
+myLinkedlist.push(6)
+myLinkedlist.unshift(1)
+myLinkedlist.push(90)
+myLinkedlist.unshift(4)
+
+console.log("why", myLinkedlist)
 
 
