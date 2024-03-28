@@ -75,7 +75,7 @@ class Linkedlist {
     }
     get = function (index) {
         if (index < 0 || index > this.length) { return undefined }
-        temp = this.head
+        let temp = this.head
         for (let i = 0; i < index; i++) {
             temp = temp.next
         }
@@ -89,16 +89,50 @@ class Linkedlist {
         }
         return false
     }
+
+    insert = function (index, value) {
+        if (index == 0) return this.unshift(value)
+        if (index === this.length) return this.push(value);
+        if (index < 0 || index > this.length) return false
+        const newNode = new new_node(value)
+        // let temp = this.head
+        // for (let i = 0; i < index; i++) {
+        //     temp = temp.next
+        // }
+        const temp = this.get(index)
+        newNode.next = temp.next
+
+        temp.next = newNode
+        return true
+    }
+    remove = function (index) {
+        if (index === 0) return this.shift();
+        if (index == this.length) return this.pop()
+        if (index < 0 || index >= this.length) return undefined
+        let prev = this.get(index - 1)
+        let temp = prev.next
+        prev.next = temp.next
+        temp.next = null
+        this.length--
+        return temp
+    }
+
+    print = function () {
+        let temp = this.head
+        while (temp != null) {
+            console.log(temp.value)
+            temp = temp.next
+
+        }
+    }
+
 }
 
 let myLinkedlist = new Linkedlist(4)
 
-//test my LinkedList
-myLinkedlist.push(6)
-myLinkedlist.unshift(1)
-myLinkedlist.push(90)
-myLinkedlist.unshift(4)
+// myLinkedlist.push(7)
+// myLinkedlist.insert(1,3)
+myLinkedlist.remove(1)
+// myLinkedlist.remove(1)
 
-console.log("why", myLinkedlist)
-
-
+// myLinkedlist.print()
